@@ -1,5 +1,5 @@
 import { FC, useCallback, useState } from 'react';
-import ReactFlow, { Node, addEdge, applyEdgeChanges, applyNodeChanges, NodeChange, EdgeChange, Connection, Background, BackgroundVariant } from 'react-flow-renderer';
+import ReactFlow, { Edge, Node, addEdge, applyEdgeChanges, applyNodeChanges, NodeChange, EdgeChange, Connection, Background, BackgroundVariant } from 'react-flow-renderer';
 
 const initialNodes: Node[] = [
   {
@@ -23,7 +23,7 @@ const initialNodes: Node[] = [
   },
 ];
 
-const initialEdges = [
+const initialEdges: Edge[] = [
   { id: 'e1-2', source: '1', target: '2' },
   { id: 'e2-3', source: '2', target: '3', animated: true },
 ];
