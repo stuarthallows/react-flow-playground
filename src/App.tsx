@@ -1,72 +1,15 @@
-import { useEffect, useCallback, useState } from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
-import ReactFlow, { Node, addEdge, applyEdgeChanges, applyNodeChanges, NodeChange, EdgeChange, Connection, Background, BackgroundVariant } from 'react-flow-renderer';
+import { Navigation } from './components/Navigation';
 import { Person } from "./mocks/browser";
 import { get } from './utils/api';
+import { Routes, Route } from "react-router-dom";
+import { Graph1 } from './components/Graph1';
+import { Graph2 } from './components/Graph2';
 
 const Wrapper = styled.div`
   height: 100vh;
 `;
-
-const initialNodes: Node[] = [
-  {
-    id: '1',
-    type: 'input',
-    data: { label: 'Input Node' },
-    position: { x: 250, y: 25 },
-  },
-
-  {
-    id: '2',
-    // you can also pass a React component as a label
-    data: { label: <div>Default Node</div> },
-    position: { x: 100, y: 125 },
-  },
-  {
-    id: '3',
-    type: 'output',
-    data: { label: 'Output Node' },
-    position: { x: 250, y: 250 },
-  },
-];
-
-const initialEdges = [
-  { id: 'e1-2', source: '1', target: '2' },
-  { id: 'e2-3', source: '2', target: '3', animated: true },
-];
-
-function Flow() {
-  const [nodes, setNodes] = useState(initialNodes);
-  const [edges, setEdges] = useState(initialEdges);
-
-  const onNodesChange = useCallback(
-    (changes: NodeChange[]) => setNodes((nds) => applyNodeChanges(changes, nds)),
-    [setNodes]
-  );
-  const onEdgesChange = useCallback(
-    (changes: EdgeChange[]) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-    [setEdges]
-  );
-
-  const onConnect = useCallback(
-    (connection: Connection) => setEdges((eds) => addEdge(connection, eds)),
-    [setEdges]
-  );
-
-  return (
-    <ReactFlow
-      nodes={nodes}
-      edges={edges}
-      onNodesChange={onNodesChange}
-      onEdgesChange={onEdgesChange}
-      onConnect={onConnect}
-      fitView
-    >
-      <Background variant={BackgroundVariant.Lines} gap={12} size={4} />
-    </ReactFlow>
-  );
-}
-
 
 const fetchPerson = async (personId: number): Promise<Person> => {
   const url = `people/${personId}`;
@@ -89,7 +32,12 @@ function App() {
 
   return (
     <Wrapper>
-      <Flow />
+      <Navigation />
+
+      <Routes>
+        <Route path="graph1" element={<Graph1 />} />
+        <Route path="graph2" element={<Graph2 />} />
+      </Routes>
     </Wrapper>
   );
 }
