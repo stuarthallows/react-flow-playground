@@ -1,8 +1,8 @@
-import { useCallback, useState } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 import styled from 'styled-components';
-
 import ReactFlow, { Node, addEdge, applyEdgeChanges, applyNodeChanges, NodeChange, EdgeChange, Connection, Background, BackgroundVariant } from 'react-flow-renderer';
-import { useFetch } from './hooks/useFetch';
+import { Person } from "./mocks/browser";
+import { get } from './utils/api';
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -68,12 +68,25 @@ function Flow() {
 }
 
 
-function App() {
-  const { data, error } = useFetch<any>("graph/1");
+const fetchPerson = async (personId: number): Promise<Person> => {
+  const url = `people/${personId}`;
+  return get<Person>(url);
+};
 
-  if (error) return <p>There is an error.</p>
-  if (!data) return <p>Loading...</p>
-  
+
+function App() {
+  // const { data, error } = useFetch<Node[]>("http://localhost:4000/graph/1");
+
+  useEffect(() => {
+    fetchPerson(1)
+      .then(response => console.log("got data back!!!", response))
+      .catch(error => console.error("Error!!!", error));
+  }, []);
+
+  // console.log("error", error);
+  // if (error) return <p>There is an error.</p>
+  // if (!data) return <p>Loading...</p>
+
   return (
     <Wrapper>
       <Flow />
