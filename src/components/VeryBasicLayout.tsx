@@ -65,7 +65,7 @@ export const VeryBasicLayout: FC = () => {
       onConnect={onConnect}
       fitView
     >
-      <Background variant={BackgroundVariant.Lines} gap={12} size={4} />
+      <Background variant={BackgroundVariant.Lines} />
     </ReactFlow>
   );
 };

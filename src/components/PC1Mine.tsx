@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Edge, Node } from 'react-flow-renderer';
+import { Edge, MarkerType, Node } from 'react-flow-renderer';
 
 import { AssetData } from './AssetNode';
 import { AutoLayout } from './AutoLayout';
@@ -9,7 +9,7 @@ export const nodes: Node<AssetData>[] = [
     id: 'ext-106',
     data: { label: 'EXT-106', type: 'ext', output: false },
     position: { x: 0, y: 0 },
-    type: 'asset'
+    type: 'asset',
   },
   {
     id: 'ext-108',
@@ -83,12 +83,12 @@ export const edges: Edge[] = [
   {
     id: '1',
     source: 'ext-106',
-    target: 'dp-101',
+    target: 'dp-101'
   },
   {
     id: '2',
     source: 'ext-108',
-    target: 'dp-102',
+    target: 'dp-102'
   },
   {
     id: '3',
