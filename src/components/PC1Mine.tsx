@@ -22,32 +22,130 @@ import { useLayout } from '../hooks/useLayout';
 
 export const initialNodes: Node[] = [
   {
-    id: '1',
-    data: { label: 'Node 1' },
+    id: 'ext-106',
+    data: { label: 'EXT-106' },
+    position: { x: 0, y: 0 },
+    type: 'input'
+  },
+  {
+    id: 'ext-108',
+    data: { label: 'EXT-108' },
+    position: { x: 0, y: 0 },
+    type: 'input'
+  },  
+  {
+    id: 'ext-110',
+    data: { label: 'EXT-110' },
+    position: { x: 0, y: 0 },
+    type: 'input'
+  },  
+  {
+    id: 'ext-112',
+    data: { label: 'EXT-112' },
+    position: { x: 0, y: 0 },
+    type: 'input'
+  },  
+  {
+    id: 'ext-114',
+    data: { label: 'EXT-114' },
+    position: { x: 0, y: 0 },
+    type: 'input'
+  },  
+  {
+    id: 'ext-116',
+    data: { label: 'EXT-116' },
+    position: { x: 0, y: 0 },
+    type: 'input'
+  },
+  {
+    id: 'ext-118',
+    data: { label: 'EXT-118' },
+    position: { x: 0, y: 0 },
+    type: 'input'
+  },
+  {
+    id: 'dp-101',
+    data: { label: 'DP-101' },
     position: { x: 0, y: 0 },
   },
   {
-    id: '2',
-    data: { label: 'Node 2' },
+    id: 'dp-102',
+    data: { label: 'DP-102' },
     position: { x: 0, y: 0 },
   },
   {
-    id: '3',
-    data: { label: 'Node 3' },
+    id: 'dp-103',
+    data: { label: 'DP-103' },
     position: { x: 0, y: 0 },
+  },
+  {
+    id: 'dp-104',
+    data: { label: 'DP-104' },
+    position: { x: 0, y: 0 },
+  },
+  {
+    id: 'bn-3001',
+    data: { label: 'BN-3001' },
+    position: { x: 0, y: 0 },
+    type: 'output'
   },
 ];
 
 export const initialEdges: Edge[] = [
   {
-    id: '1->2',
-    source: '1',
-    target: '2',
+    id: '1',
+    source: 'ext-106',
+    target: 'dp-101',
   },
   {
-    id: '1->3',
-    source: '1',
-    target: '3',
+    id: '2',
+    source: 'ext-108',
+    target: 'dp-102',
+  },
+  {
+    id: '3',
+    source: 'ext-110',
+    target: 'dp-102',
+  },
+  {
+    id: '4',
+    source: 'ext-112',
+    target: 'dp-103',
+  },
+  {
+    id: '5',
+    source: 'ext-114',
+    target: 'dp-103',
+  },
+  {
+    id: '6',
+    source: 'ext-116',
+    target: 'dp-104',
+  },
+  {
+    id: '7',
+    source: 'ext-118',
+    target: 'dp-104',
+  },
+  {
+    id: '8',
+    source: 'dp-101',
+    target: 'bn-3001',
+  },
+  {
+    id: '9',
+    source: 'dp-102',
+    target: 'bn-3001',
+  },
+  {
+    id: '10',
+    source: 'dp-103',
+    target: 'bn-3001',
+  },
+  {
+    id: '11',
+    source: 'dp-104',
+    target: 'bn-3001',
   },
 ];
 
@@ -106,7 +204,7 @@ function AutomaticLayout() {
   );
 }
 
-export const AutoLayout: FC = () => 
+export const PC1Mine: FC = () => 
   <ReactFlowProvider>
     <AutomaticLayout />
   </ReactFlowProvider>;

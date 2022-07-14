@@ -19,7 +19,6 @@ const initialNodes: Node[] = [
     data: { label: 'Input Node' },
     position: { x: 250, y: 25 },
   },
-
   {
     id: '2',
     // you can also pass a React component as a label

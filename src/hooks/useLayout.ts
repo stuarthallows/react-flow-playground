@@ -17,7 +17,7 @@ export type Options = {
 const dagreGraph = new dagre.graphlib!.Graph();
 dagreGraph.setDefaultEdgeLabel(() => ({}));
 
-const nodeWidth = 100;
+const nodeWidth = 110;
 const nodeHeight = 50;
 
 const positionMap = {
