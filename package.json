@@ -17,6 +17,7 @@
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "dagre": "^0.8.5",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-flow-renderer": "^10.3.8",
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "@types/dagre": "^0.7.47",
+    "@types/lodash": "^4.14.182",
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.1.6"

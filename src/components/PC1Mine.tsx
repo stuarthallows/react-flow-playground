@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import { Edge, MarkerType, Node } from 'react-flow-renderer';
+import { Edge, Node } from 'react-flow-renderer';
+// import { shuffle } from "lodash";
 
 import { AssetData } from './AssetNode';
 import { AutoLayout } from './AutoLayout';
@@ -137,4 +138,8 @@ export const edges: Edge[] = [
   },
 ];
 
-export const PC1Mine: FC = () => <AutoLayout nodes={nodes} edges={edges} />;
+// const shuffledNodes = shuffle(nodes);
+// const shuffledEdges = shuffle(edges);
+
+export const PC1Mine: FC = () => 
+  <AutoLayout nodes={nodes} edges={edges} />;
