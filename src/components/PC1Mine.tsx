@@ -11,79 +11,85 @@ import ReactFlow, {
   MarkerType,
   FitViewOptions,
   useNodesState,
-  useEdgesState
+  useEdgesState,
+  DefaultEdgeOptions
 } from 'react-flow-renderer';
 import { useLayout } from '../hooks/useLayout';
 
 // See example https://reactflow.dev/docs/examples/layout/auto-layout/
 // See source https://dev.azure.com/willowdev/Twin%20Platform/_git/TwinPlatform?path=/samples/react-flow/sample-browser/src/samples/auto-layout/index.js 
 
-export const initialNodes: Node[] = [
+type NodeData = {
+  label: string;
+  type: string;
+}
+
+export const initialNodes: Node<NodeData>[] = [
   {
     id: 'ext-106',
-    data: { label: 'EXT-106' },
+    data: { label: 'EXT-106', type: 'ext' },
     position: { x: 0, y: 0 },
     type: 'input'
   },
   {
     id: 'ext-108',
-    data: { label: 'EXT-108' },
+    data: { label: 'EXT-108', type: 'ext' },
     position: { x: 0, y: 0 },
     type: 'input'
   },  
   {
     id: 'ext-110',
-    data: { label: 'EXT-110' },
+    data: { label: 'EXT-110', type: 'ext' },
     position: { x: 0, y: 0 },
     type: 'input'
   },  
   {
     id: 'ext-112',
-    data: { label: 'EXT-112' },
+    data: { label: 'EXT-112', type: 'ext' },
     position: { x: 0, y: 0 },
     type: 'input'
   },  
   {
     id: 'ext-114',
-    data: { label: 'EXT-114' },
+    data: { label: 'EXT-114', type: 'ext' },
     position: { x: 0, y: 0 },
     type: 'input'
   },  
   {
     id: 'ext-116',
-    data: { label: 'EXT-116' },
+    data: { label: 'EXT-116', type: 'ext' },
     position: { x: 0, y: 0 },
     type: 'input'
   },
   {
     id: 'ext-118',
-    data: { label: 'EXT-118' },
+    data: { label: 'EXT-118', type: 'ext' },
     position: { x: 0, y: 0 },
     type: 'input'
   },
   {
     id: 'dp-101',
-    data: { label: 'DP-101' },
+    data: { label: 'DP-101', type: 'dp' },
     position: { x: 0, y: 0 },
   },
   {
     id: 'dp-102',
-    data: { label: 'DP-102' },
+    data: { label: 'DP-102', type: 'dp' },
     position: { x: 0, y: 0 },
   },
   {
     id: 'dp-103',
-    data: { label: 'DP-103' },
+    data: { label: 'DP-103', type: 'dp' },
     position: { x: 0, y: 0 },
   },
   {
     id: 'dp-104',
-    data: { label: 'DP-104' },
+    data: { label: 'DP-104', type: 'dp' },
     position: { x: 0, y: 0 },
   },
   {
     id: 'bn-3001',
-    data: { label: 'BN-3001' },
+    data: { label: 'BN-3001', type: 'bn' },
     position: { x: 0, y: 0 },
     type: 'output'
   },
@@ -147,7 +153,9 @@ export const initialEdges: Edge[] = [
   },
 ];
 
-const defaultEdgeOptions = { type: 'smoothstep', markerEnd: { type: MarkerType.ArrowClosed } };
+const defaultEdgeOptions: DefaultEdgeOptions = { 
+  type: 'smoothstep', 
+};
 
 const fitViewOptions: FitViewOptions = {
   padding: 0.2
@@ -166,7 +174,7 @@ function AutomaticLayout() {
 
   // this hook handles the computation of the layout once the elements or the direction changes
   // because React Flow only needs the position of the nodes, there is no need to return the edges here
-  const positionedNodes = useLayout(nodes, edges, { direction: 'TB' });
+  const positionedNodes = useLayout(nodes, edges, { direction: 'LR' });
 
   useEffect(() => {
     // every time the layout has been computed, we want to fit the view to all nodes again
