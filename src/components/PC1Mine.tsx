@@ -1,19 +1,17 @@
-import { FC, useCallback, useEffect, useState } from 'react';
+import { FC, useCallback, useEffect } from 'react';
 import ReactFlow, { 
   Edge, 
   Node, 
   addEdge, 
-  applyEdgeChanges, 
-  applyNodeChanges, 
-  NodeChange, 
-  EdgeChange, 
   Connection, 
   Background, 
   BackgroundVariant, 
   ReactFlowProvider, 
   useReactFlow, 
   MarkerType,
-  FitViewOptions
+  FitViewOptions,
+  useNodesState,
+  useEdgesState
 } from 'react-flow-renderer';
 import { useLayout } from '../hooks/useLayout';
 
@@ -158,17 +156,8 @@ const fitViewOptions: FitViewOptions = {
 function AutomaticLayout() {
   const { fitView } = useReactFlow();
 
-  const [nodes, setNodes] = useState(initialNodes);
-  const [edges, setEdges] = useState(initialEdges);
-
-  const onNodesChange = useCallback(
-    (changes: NodeChange[]) => setNodes((nds) => applyNodeChanges(changes, nds)),
-    [setNodes]
-  );
-  const onEdgesChange = useCallback(
-    (changes: EdgeChange[]) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-    [setEdges]
-  );
+  const [nodes, , onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
   const onConnect = useCallback(
     (connection: Connection) => setEdges((eds) => addEdge(connection, eds)),
