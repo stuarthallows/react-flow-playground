@@ -100,7 +100,7 @@ function AutomaticLayout() {
   );
 }
 
-export const Graph2: FC = () => 
+export const AutoLayout: FC = () => 
   <ReactFlowProvider>
     <AutomaticLayout />
   </ReactFlowProvider>;

@@ -1,5 +1,16 @@
 import { FC, useCallback, useState } from 'react';
-import ReactFlow, { Edge, Node, addEdge, applyEdgeChanges, applyNodeChanges, NodeChange, EdgeChange, Connection, Background, BackgroundVariant } from 'react-flow-renderer';
+import ReactFlow, { 
+  Edge, 
+  Node, 
+  addEdge, 
+  applyEdgeChanges, 
+  applyNodeChanges, 
+  NodeChange, 
+  EdgeChange, 
+  Connection, 
+  Background, 
+  BackgroundVariant 
+} from 'react-flow-renderer';
 
 const initialNodes: Node[] = [
   {
@@ -28,7 +39,7 @@ const initialEdges: Edge[] = [
   { id: 'e2-3', source: '2', target: '3', animated: true },
 ];
 
-function VeryBasicLayout() {
+export const VeryBasicLayout: FC = () => {
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
 
@@ -58,6 +69,4 @@ function VeryBasicLayout() {
       <Background variant={BackgroundVariant.Lines} gap={12} size={4} />
     </ReactFlow>
   );
-}
-
-export const Graph1: FC = () => <VeryBasicLayout />;
+};

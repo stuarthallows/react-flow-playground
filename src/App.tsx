@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import styled from 'styled-components';
 
-import { Graph1 } from './components/Graph1';
-import { Graph2 } from './components/Graph2';
+import { VeryBasicLayout } from './components/VeryBasicLayout';
+import { AutoLayout } from './components/AutoLayout';
 import { Navigation } from './components/Navigation';
 
 const Wrapper = styled.div`
@@ -23,8 +23,8 @@ function App() {
 
       <div className="flow-container">
         <Routes>
-          <Route path="graph1" element={<Graph1 />} />
-          <Route path="graph2" element={<Graph2 />} />
+          <Route path="basic" element={<VeryBasicLayout />} />
+          <Route path="auto" element={<AutoLayout />} />
         </Routes>
       </div>
     </Wrapper>
