@@ -1,25 +1,10 @@
-import { FC, useCallback, useEffect } from 'react';
-import ReactFlow, { 
-  Edge, 
-  Node, 
-  addEdge, 
-  Connection, 
-  Background, 
-  BackgroundVariant, 
-  ReactFlowProvider, 
-  useReactFlow, 
-  FitViewOptions,
-  useNodesState,
-  useEdgesState,
-  DefaultEdgeOptions,
-} from 'react-flow-renderer';
-import { useLayout } from '../hooks/useLayout';
-import { AssetData, AssetNode } from './AssetNode';
+import { FC } from 'react';
+import { Edge, Node } from 'react-flow-renderer';
 
-// See example https://reactflow.dev/docs/examples/layout/auto-layout/
-// See source https://dev.azure.com/willowdev/Twin%20Platform/_git/TwinPlatform?path=/samples/react-flow/sample-browser/src/samples/auto-layout/index.js 
+import { AssetData } from './AssetNode';
+import { AutoLayout } from './AutoLayout';
 
-export const initialNodes: Node<AssetData>[] = [
+export const nodes: Node<AssetData>[] = [
   {
     id: 'fd-3021',
     data: { label: 'FD-3021', type: 'fd', output: false },
@@ -64,7 +49,7 @@ export const initialNodes: Node<AssetData>[] = [
   }
 ];
 
-export const initialEdges: Edge[] = [
+export const edges: Edge[] = [
   {
     id: '1',
     source: 'fd-3021',
@@ -97,60 +82,4 @@ export const initialEdges: Edge[] = [
   }
 ];
 
-const defaultEdgeOptions: DefaultEdgeOptions = { 
-  type: 'smoothstep', 
-};
-
-const fitViewOptions: FitViewOptions = {
-  padding: 0.2
-}
-
-const nodeTypes = {
-  asset: AssetNode
-};
-
-function AutomaticLayout() {
-  const { fitView } = useReactFlow();
-
-  const [nodes, , onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-
-  const onConnect = useCallback(
-    (connection: Connection) => setEdges((eds) => addEdge(connection, eds)),
-    [setEdges]
-  );
-
-  // this hook handles the computation of the layout once the elements or the direction changes
-  // because React Flow only needs the position of the nodes, there is no need to return the edges here
-  const positionedNodes = useLayout(nodes, edges, { direction: 'LR' });
-
-  useEffect(() => {
-    // every time the layout has been computed, we want to fit the view to all nodes again
-    setTimeout(() => {
-      // duration is used for a smooth animation
-      fitView({ duration: 400 });
-    }, 100);
-  }, [positionedNodes, fitView]);
-
-  return (
-    <ReactFlow
-      nodes={positionedNodes}
-      edges={edges}
-      onNodesChange={onNodesChange}
-      onEdgesChange={onEdgesChange}
-      onConnect={onConnect}
-      fitView
-      fitViewOptions={fitViewOptions}
-      // newly added edges get these options automatically
-      defaultEdgeOptions={defaultEdgeOptions}
-      nodeTypes={nodeTypes}
-      >
-      <Background variant={BackgroundVariant.Dots} gap={24} size={.5} />
-    </ReactFlow>
-  );
-}
-
-export const PC1CX: FC = () => 
-  <ReactFlowProvider>
-    <AutomaticLayout />
-  </ReactFlowProvider>;
+export const PC1CX: FC = () => <AutoLayout nodes={nodes} edges={edges} />;

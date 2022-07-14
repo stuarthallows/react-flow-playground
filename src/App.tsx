@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import styled from 'styled-components';
 
 import { VeryBasicLayout } from './components/VeryBasicLayout';
-import { AutoLayout } from './components/AutoLayout';
 import { Navigation } from './components/Navigation';
 import { PC1Mine } from "./components/PC1Mine";
 import { PC1CX } from "./components/PC1CX";
@@ -26,7 +25,6 @@ function App() {
       <div className="flow-container">
         <Routes>
           <Route path="basic" element={<VeryBasicLayout />} />
-          <Route path="auto" element={<AutoLayout />} />
           <Route path="pc1-mine" element={<PC1Mine />} />
           <Route path="pc1-cx" element={<PC1CX />} />
         </Routes>
