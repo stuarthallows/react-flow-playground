@@ -22,73 +22,73 @@ import { AssetData, AssetNode } from './AssetNode';
 export const initialNodes: Node<AssetData>[] = [
   {
     id: 'ext-106',
-    data: { label: 'EXT-106', type: 'ext' },
+    data: { label: 'EXT-106', type: 'ext', input: true, output: false },
     position: { x: 0, y: 0 },
     type: 'asset'
   },
   {
     id: 'ext-108',
-    data: { label: 'EXT-108', type: 'ext' },
+    data: { label: 'EXT-108', type: 'ext', input: true, output: false },
     position: { x: 0, y: 0 },
     type: 'asset'
   },  
   {
     id: 'ext-110',
-    data: { label: 'EXT-110', type: 'ext' },
+    data: { label: 'EXT-110', type: 'ext', input: true, output: false },
     position: { x: 0, y: 0 },
     type: 'asset'
   },  
   {
     id: 'ext-112',
-    data: { label: 'EXT-112', type: 'ext' },
+    data: { label: 'EXT-112', type: 'ext', input: true, output: false },
     position: { x: 0, y: 0 },
     type: 'asset'
   },  
   {
     id: 'ext-114',
-    data: { label: 'EXT-114', type: 'ext' },
+    data: { label: 'EXT-114', type: 'ext', input: true, output: false },
     position: { x: 0, y: 0 },
     type: 'asset'
   },  
   {
     id: 'ext-116',
-    data: { label: 'EXT-116', type: 'ext' },
+    data: { label: 'EXT-116', type: 'ext', input: true, output: false },
     position: { x: 0, y: 0 },
     type: 'asset'
   },
   {
     id: 'ext-118',
-    data: { label: 'EXT-118', type: 'ext' },
+    data: { label: 'EXT-118', type: 'ext', input: true, output: false },
     position: { x: 0, y: 0 },
     type: 'asset'
   },
   {
     id: 'dp-101',
-    data: { label: 'DP-101', type: 'dp' },
+    data: { label: 'DP-101', type: 'dp', input: true, output: true },
     position: { x: 0, y: 0 },
     type: 'asset'
   },
   {
     id: 'dp-102',
-    data: { label: 'DP-102', type: 'dp' },
+    data: { label: 'DP-102', type: 'dp', input: true, output: true },
     position: { x: 0, y: 0 },
     type: 'asset'
   },
   {
     id: 'dp-103',
-    data: { label: 'DP-103', type: 'dp' },
+    data: { label: 'DP-103', type: 'dp', input: true, output: true },
     position: { x: 0, y: 0 },
     type: 'asset'
   },
   {
     id: 'dp-104',
-    data: { label: 'DP-104', type: 'dp' },
+    data: { label: 'DP-104', type: 'dp', input: true, output: true },
     position: { x: 0, y: 0 },
     type: 'asset'
   },
   {
     id: 'bn-3001',
-    data: { label: 'BN-3001', type: 'bn' },
+    data: { label: 'BN-3001', type: 'bn', input: false, output: true },
     position: { x: 0, y: 0 },
     type: 'asset'
   },
