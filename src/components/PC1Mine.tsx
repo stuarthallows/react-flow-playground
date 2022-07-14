@@ -8,90 +8,89 @@ import ReactFlow, {
   BackgroundVariant, 
   ReactFlowProvider, 
   useReactFlow, 
-  MarkerType,
   FitViewOptions,
   useNodesState,
   useEdgesState,
-  DefaultEdgeOptions
+  DefaultEdgeOptions,
 } from 'react-flow-renderer';
 import { useLayout } from '../hooks/useLayout';
+import { AssetData, AssetNode } from './AssetNode';
 
 // See example https://reactflow.dev/docs/examples/layout/auto-layout/
 // See source https://dev.azure.com/willowdev/Twin%20Platform/_git/TwinPlatform?path=/samples/react-flow/sample-browser/src/samples/auto-layout/index.js 
 
-type NodeData = {
-  label: string;
-  type: string;
-}
-
-export const initialNodes: Node<NodeData>[] = [
+export const initialNodes: Node<AssetData>[] = [
   {
     id: 'ext-106',
     data: { label: 'EXT-106', type: 'ext' },
     position: { x: 0, y: 0 },
-    type: 'input'
+    type: 'asset'
   },
   {
     id: 'ext-108',
     data: { label: 'EXT-108', type: 'ext' },
     position: { x: 0, y: 0 },
-    type: 'input'
+    type: 'asset'
   },  
   {
     id: 'ext-110',
     data: { label: 'EXT-110', type: 'ext' },
     position: { x: 0, y: 0 },
-    type: 'input'
+    type: 'asset'
   },  
   {
     id: 'ext-112',
     data: { label: 'EXT-112', type: 'ext' },
     position: { x: 0, y: 0 },
-    type: 'input'
+    type: 'asset'
   },  
   {
     id: 'ext-114',
     data: { label: 'EXT-114', type: 'ext' },
     position: { x: 0, y: 0 },
-    type: 'input'
+    type: 'asset'
   },  
   {
     id: 'ext-116',
     data: { label: 'EXT-116', type: 'ext' },
     position: { x: 0, y: 0 },
-    type: 'input'
+    type: 'asset'
   },
   {
     id: 'ext-118',
     data: { label: 'EXT-118', type: 'ext' },
     position: { x: 0, y: 0 },
-    type: 'input'
+    type: 'asset'
   },
   {
     id: 'dp-101',
     data: { label: 'DP-101', type: 'dp' },
     position: { x: 0, y: 0 },
+    type: 'asset'
   },
   {
     id: 'dp-102',
     data: { label: 'DP-102', type: 'dp' },
     position: { x: 0, y: 0 },
+    type: 'asset'
   },
   {
     id: 'dp-103',
     data: { label: 'DP-103', type: 'dp' },
     position: { x: 0, y: 0 },
+    type: 'asset'
   },
   {
     id: 'dp-104',
     data: { label: 'DP-104', type: 'dp' },
     position: { x: 0, y: 0 },
+    type: 'asset'
   },
   {
     id: 'bn-3001',
     data: { label: 'BN-3001', type: 'bn' },
     position: { x: 0, y: 0 },
-    type: 'output'
+    type: 'asset'
   },
 ];
 
@@ -161,6 +160,10 @@ const fitViewOptions: FitViewOptions = {
   padding: 0.2
 }
 
+const nodeTypes = {
+  asset: AssetNode
+};
+
 function AutomaticLayout() {
   const { fitView } = useReactFlow();
 
@@ -195,6 +198,7 @@ function AutomaticLayout() {
       fitViewOptions={fitViewOptions}
       // newly added edges get these options automatically
       defaultEdgeOptions={defaultEdgeOptions}
+      nodeTypes={nodeTypes}
       >
       <Background variant={BackgroundVariant.Dots} gap={24} size={.5} />
     </ReactFlow>
