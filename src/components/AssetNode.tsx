@@ -13,14 +13,14 @@ export type AssetData = {
 export const AssetNode: FC<NodeProps<AssetData>> = ({ data }: NodeProps<AssetData>) => {
   return (
     <div className="bg-slate-600 text-stone-50 rounded px-2 py-1 border-gray-500 border-2">
-      {data.output && <Handle type="target" position={Position.Left} />}
+      {(data.output ?? true) && <Handle type="target" position={Position.Left} />}
       <div>
         <div className="bg-slate-800 rounded text-center">
           {data.type}
         </div>
         {data.label}
       </div>
-      {data.input && <Handle type="source" position={Position.Right} />}
+      {(data.input ?? true) && <Handle type="source" position={Position.Right} />}
     </div>
   );
 }
